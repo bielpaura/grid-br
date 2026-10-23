@@ -1,88 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#e10600">
-  <meta name="description" content="GRID BR — notícias, calendário, resultados e classificação do automobilismo.">
-  <title>GRID BR — O mundo da F1 em um só lugar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GRID BR | Fórmula 1</title>
+<style>
+:root{--red:#e10600;--black:#15151e;--bg:#f3f3f5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--black)}
+a{text-decoration:none;color:inherit}
+.top{background:var(--red);color:white;text-align:center;padding:8px;font-weight:bold;font-size:12px;letter-spacing:2px}
+header{background:var(--black);color:white;padding:24px max(calc((100% - 1160px)/2),20px)}
+.logo{font-size:36px;font-weight:1000;font-style:italic;letter-spacing:-2px}
+.logo span{color:var(--red)}
+header p{color:#aaa;font-size:11px;letter-spacing:2px;margin-top:4px}
+nav{background:white;border-bottom:1px solid #ddd;display:flex;gap:26px;padding:0 max(calc((100% - 1160px)/2),20px);overflow:auto}
+nav a{padding:16px 0;white-space:nowrap;font-size:12px;font-weight:bold;text-transform:uppercase}
+nav a:hover{color:var(--red)}
+.ticker{padding:13px max(calc((100% - 1160px)/2),20px);background:white;font-size:12px;font-weight:bold}
+.ticker b{background:var(--red);color:white;padding:7px;margin-right:10px}
+main{max-width:1200px;margin:auto;padding:28px 20px}
+h2.section{font-size:19px;text-transform:uppercase;border-left:5px solid var(--red);padding-left:10px;margin-bottom:18px}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-bottom:35px}
+.lead{position:relative;min-height:380px;background:#222;color:white;display:flex;align-items:end;overflow:hidden}
+.lead img{position:absolute;width:100%;height:100%;object-fit:cover;inset:0;opacity:.78}
+.lead:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.95))}
+.lead-copy{position:relative;z-index:1;padding:25px}
+.tag{display:inline-block;background:var(--red);color:white;padding:6px 9px;font-size:10px;font-weight:bold;text-transform:uppercase}
+.lead h1{font-size:clamp(26px,4vw,42px);line-height:1.08;margin:12px 0}
+.side{display:grid;gap:18px}
+.side article{background:white;display:grid;grid-template-columns:42% 1fr;min-height:180px}
+.side img{width:100%;height:100%;min-height:180px;object-fit:cover}
+.side-copy{padding:16px;align-self:center}
+.side h3{font-size:18px;line-height:1.2;margin-top:10px}
+.layout{display:grid;grid-template-columns:1fr 290px;gap:24px}
+.news{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:white;overflow:hidden}
+.card img{width:100%;height:190px;object-fit:cover;display:block}
+.copy{padding:17px}
+.copy h3{font-size:19px;line-height:1.2;margin:10px 0}
+.copy p{font-size:13px;line-height:1.5;color:#666}
+.meta{font-size:10px;color:#777;margin-top:14px;font-weight:bold}
+.search{width:100%;padding:13px;border:1px solid #ddd;margin-bottom:18px;font-size:14px}
+.sidebar{display:grid;gap:18px;align-content:start}
+.panel{background:white;padding:20px}
+.panel h3{font-size:16px;text-transform:uppercase;border-bottom:2px solid var(--red);padding-bottom:12px;margin-bottom:13px}
+.panel p{font-size:13px;color:#666;line-height:1.7}
+.row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #eee;font-size:12px}
+.row b:first-child{color:var(--red)}
+.btn{display:block;background:var(--black);color:white;text-align:center;padding:12px;margin-top:14px;font-size:12px;font-weight:bold}
+.btn:hover{background:var(--red)}
+footer{background:var(--black);color:white;padding:30px 20px}
+.footer-inner{max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:12px;color:#aaa}
+footer small{display:block;max-width:1160px;margin:18px auto 0;color:#aaa;line-height:1.5}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.lead{min-height:330px}.side{grid-template-columns:1fr 1fr}.side article{grid-template-columns:1fr}.side img{height:125px;min-height:125px}.layout{grid-template-columns:1fr}.sidebar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){header{padding:20px}.logo{font-size:30px}nav{gap:20px;padding:0 15px}main{padding:22px 14px}.lead{min-height:320px}.lead-copy{padding:18px}.side{grid-template-columns:1fr}.side article{grid-template-columns:38% 1fr}.side img{height:140px;min-height:140px}.side h3{font-size:15px}.news{grid-template-columns:1fr}.card img{height:210px}.sidebar{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <div class="topline"><div class="container topline-inner"><span>GRID BR <i>•</i> A VELOCIDADE EM PRIMEIRO LUGAR</span><span class="demo-label"><span class="dot"></span> VERSÃO DEMONSTRAÇÃO</span></div></div>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#inicio" aria-label="GRID BR início"><span class="brand-mark">G</span><span>GRID<span class="brand-red">BR</span><small>FORMULA RACING HUB</small></span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-      <nav id="mainNav" class="main-nav" aria-label="Navegação principal">
-        <a class="nav-link active" href="#inicio">Início</a>
-        <a class="nav-link" href="#noticias">Notícias</a>
-        <a class="nav-link" href="#classificacao">Classificação</a>
-        <a class="nav-link" href="#calendario">Calendário</a>
-        <a class="nav-link" href="#sobre">Sobre</a>
-      </nav>
-      <a class="header-cta" href="#noticias">Explorar <span>↗</span></a>
-    </div>
-  </header>
-
-  <main id="inicio">
-    <section class="hero container">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> A CASA DO AUTOMOBILISMO</div>
-        <h1>ACELERE.<br><span>INFORME-SE.</span><br>VIVA A F1.</h1>
-        <p>Notícias, histórias, números e tudo o que faz o coração acelerar dentro e fora das pistas.</p>
-        <div class="hero-actions"><a class="btn btn-red" href="#noticias">Ver últimas notícias <span>→</span></a><a class="text-link" href="#classificacao">Explorar classificação <span>↗</span></a></div>
-        <div class="hero-stats"><div><strong>F1</strong><span>Notícias e análises</span></div><div><strong>F2</strong><span>Novos talentos</span></div><div><strong>100%</strong><span>Paixão por corrida</span></div></div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-image" role="img" aria-label="Carro de corrida em uma pista"></div>
-        <div class="hero-image-shade"></div>
-        <div class="hero-caption"><span class="caption-tag">GRID BR / FEATURE</span><strong>O próximo capítulo<br>começa na pista.</strong><span class="caption-arrow">↗</span></div>
-        <div class="hero-number">01<span>/04</span></div>
-        <div class="vertical-label">RACE CULTURE • SINCE DAY ONE</div>
-      </div>
-    </section>
-
-    <section class="ticker" aria-label="Categorias do portal"><div class="container ticker-inner"><span>FÓRMULA 1</span><b>✳</b><span>FÓRMULA 2</span><b>✳</b><span>CLASSIFICAÇÃO</span><b>✳</b><span>BASTIDORES</span><b>✳</b><span>HISTÓRIA</span><b>✳</b><span>FÓRMULA 1</span></div></section>
-
-    <section class="section container" id="noticias">
-      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> FIQUE POR DENTRO</div><h2>ÚLTIMAS <span>NOTÍCIAS</span></h2></div><div class="section-tools"><label class="search-box"><span>⌕</span><input id="newsSearch" type="search" placeholder="Buscar notícia..." aria-label="Buscar notícia"></label></div></div>
-      <div class="filter-row" id="newsFilters"><button class="filter-chip selected" data-filter="Todas">Todas</button><button class="filter-chip" data-filter="F1">F1</button><button class="filter-chip" data-filter="F2">F2</button><button class="filter-chip" data-filter="Análise">Análise</button><button class="filter-chip" data-filter="História">História</button></div>
-      <div class="news-grid" id="newsGrid" aria-live="polite"></div>
-      <p class="empty-state" id="emptyState" hidden>Nenhuma notícia encontrada. Tente outro termo.</p>
-      <div class="center-action"><button class="btn btn-outline" id="showMore">Carregar mais <span>↓</span></button></div>
-      <p class="disclaimer">As matérias exibidas nesta versão são conteúdo demonstrativo. Substitua por notícias apuradas e fontes verificáveis antes de publicar.</p>
-    </section>
-
-    <section class="dark-band" id="classificacao">
-      <div class="container standings-layout">
-        <div class="standings-intro"><div class="eyebrow"><span class="eyebrow-line"></span> A DISPUTA PELO TOPO</div><h2>QUEM ESTÁ<br><span>NA FRENTE?</span></h2><p>Acompanhe a tabela de pilotos e construtores. Os números abaixo são exemplos de interface, não a classificação oficial atual.</p><a class="text-link light" href="#calendario">Ver calendário <span>↗</span></a></div>
-        <div class="standings-card">
-          <div class="table-tabs"><button class="table-tab selected" data-table="drivers">Pilotos</button><button class="table-tab" data-table="teams">Construtores</button><span class="table-season">TEMPORADA DEMO</span></div>
-          <div class="standings-table-wrap"><table class="standings-table"><thead><tr><th>POS</th><th id="nameHeading">PILOTO</th><th>PONTOS</th></tr></thead><tbody id="standingsBody"></tbody></table></div>
-          <div class="table-footer"><span>DEMO / DADOS ILUSTRATIVOS</span><span class="live-indicator"><span class="dot"></span> SEM DADOS AO VIVO</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="calendario">
-      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> MARQUE NA AGENDA</div><h2>CALENDÁRIO <span>DE CORRIDAS</span></h2></div><div class="calendar-note">Etapas ilustrativas para demonstrar o layout</div></div>
-      <div class="calendar-grid" id="calendarGrid"></div>
-    </section>
-
-    <section class="newsletter-section">
-      <div class="container newsletter">
-        <div><div class="eyebrow"><span class="eyebrow-line"></span> NA SUA CAIXA DE ENTRADA</div><h2>FIQUE NO <span>GRID.</span></h2><p>Uma área pronta para conectar uma newsletter no futuro.</p></div>
-        <form id="newsletterForm" class="newsletter-form"><label class="sr-only" for="emailInput">Seu e-mail</label><input id="emailInput" type="email" placeholder="Seu melhor e-mail" required><button class="btn btn-red" type="submit">Quero receber <span>→</span></button><small id="newsletterMessage">Demonstração: o formulário ainda não salva nem envia e-mails.</small></form>
-      </div>
-    </section>
-  </main>
-
-  <footer id="sobre"><div class="container footer-main"><a class="brand footer-brand" href="#inicio"><span class="brand-mark">G</span><span>GRID<span class="brand-red">BR</span><small>FORMULA RACING HUB</small></span></a><p>Feito por fãs, para fãs. Um portal independente dedicado à velocidade, às histórias e às pessoas do automobilismo.</p><div class="footer-links"><a href="#noticias">Notícias</a><a href="#classificacao">Classificação</a><a href="#calendario">Calendário</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> GRID BR. Projeto independente.</span><span>GRID BR não é afiliado à Formula 1 ou à FIA.</span></div></footer>
-  <dialog id="articleDialog" class="article-dialog"><button class="dialog-close" id="dialogClose" aria-label="Fechar">×</button><div id="dialogContent"></div></dialog>
-  <script src="app.js"></script>
+<div class="top">VELOCIDADE • INFORMAÇÃO • PAIXÃO</div>
+<header>
+<a class="logo" href="#">GRID <span>BR</span></a>
+<p>O MUNDO DA F1 EM UM SÓ LUGAR</p>
+</header>
+<nav>
+<a href="#inicio">Início</a><a href="#noticias">Notícias</a><a href="#classificacao">Classificação</a><a href="#calendario">Calendário</a><a href="#sobre">Sobre</a>
+</nav>
+<div class="ticker"><b>GRID NEWS</b> Seu ponto de encontro com o mundo da Fórmula 1.</div>
+<main id="inicio">
+<h2 class="section">Destaques</h2>
+<section class="hero">
+<a class="lead" href="#noticias">
+<img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=85" alt="Carro esportivo">
+<div class="lead-copy"><span class="tag">Especial GRID BR</span><h1>Velocidade, estratégia e emoção: o universo da Fórmula 1</h1><p>REDAÇÃO GRID BR · CONTEÚDO ESPECIAL</p></div>
+</a>
+<div class="side">
+<article><img src="https://images.unsplash.com/photo-1532906619279-a4b7267faa66?auto=format&fit=crop&w=600&q=80" alt="Carro esportivo"><div class="side-copy"><span class="tag">Temporada</span><h3>O que acompanhar em um fim de semana de corrida?</h3></div></article>
+<article><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80" alt="Carro em pista"><div class="side-copy"><span class="tag">Corrida</span><h3>Estratégia, pneus e pit stops: detalhes que decidem provas</h3></div></article>
+</div>
+</section>
+<section id="noticias">
+<h2 class="section">Últimas notícias</h2>
+<input class="search" id="search" placeholder="Buscar notícias..." aria-label="Buscar notícias">
+<div class="layout">
+<div class="news" id="news"></div>
+<aside class="sidebar">
+<div class="panel" id="classificacao"><h3>Classificação</h3><div class="row"><b>01</b><strong>Dados não conectados</strong><b>—</b></div><p>Em breve: tabela de pilotos e equipes com dados atualizados.</p></div>
+<div class="panel" id="calendario"><h3>Próxima corrida</h3><p>Consulte o calendário oficial para datas e horários confirmados.</p><a class="btn" href="https://www.formula1.com/" target="_blank" rel="noopener">CALENDÁRIO OFICIAL ↗</a></div>
+<div class="panel"><h3>Sobre o GRID BR</h3><p>Um projeto independente para quem vive a velocidade. Notícias, análises e conteúdo sobre o mundo do automobilismo.</p></div>
+</aside>
+</div>
+</section>
+</main>
+<footer id="sobre"><div class="footer-inner"><div class="logo">GRID <span>BR</span></div><p>Velocidade, informação e paixão pelo automobilismo.</p></div><small>Projeto independente de fãs, sem afiliação oficial com a Formula 1, FIA ou equipes. As matérias desta versão são demonstrativas e não representam notícias atuais verificadas.</small></footer>
+<script>
+const articles=[
+{tag:"GUIA F1",title:"Como funciona um fim de semana da Fórmula 1?",desc:"Entenda os treinos livres, a classificação, a corrida sprint e o Grande Prêmio.",img:"https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80"},
+{tag:"TECNOLOGIA",title:"Aerodinâmica: como os carros conseguem tanta velocidade?",desc:"As asas e o fluxo de ar têm papel fundamental no desempenho de um carro de corrida.",img:"https://images.unsplash.com/photo-1532906619279-a4b7267faa66?auto=format&fit=crop&w=800&q=80"},
+{tag:"ESTRATÉGIA",title:"Pneus e pit stops: decisões que mudam uma corrida",desc:"A escolha do composto e o momento da parada podem fazer toda a diferença.",img:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80"},
+{tag:"HISTÓRIA",title:"Por que a Fórmula 1 é uma das categorias mais exigentes do mundo?",desc:"Tecnologia, reflexos, preparação física e trabalho em equipe fazem parte do desafio.",img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"}
+];
+const news=document.getElementById("news");
+function render(term=""){
+const list=articles.filter(a=>(a.title+" "+a.desc+" "+a.tag).toLowerCase().includes(term.toLowerCase()));
+news.innerHTML="";
+if(!list.length){news.innerHTML="<p>Nenhuma notícia encontrada.</p>";return}
+list.forEach(a=>{const el=document.createElement("article");el.className="card";el.innerHTML=`<img src="${a.img}" alt="${a.tag}" loading="lazy"><div class="copy"><span class="tag">${a.tag}</span><h3>${a.title}</h3><p>${a.desc}</p><div class="meta">CONTEÚDO GRID BR</div></div>`;news.appendChild(el)});
+}
+document.getElementById("search").addEventListener("input",e=>render(e.target.value));
+render();
+</script>
 </body>
 </html>

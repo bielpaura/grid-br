@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e10600">
+  <meta name="description" content="GRID BR — notícias, calendário, resultados e classificação do automobilismo.">
+  <title>GRID BR — O mundo da F1 em um só lugar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"><div class="container topline-inner"><span>GRID BR <i>•</i> A VELOCIDADE EM PRIMEIRO LUGAR</span><span class="demo-label"><span class="dot"></span> VERSÃO DEMONSTRAÇÃO</span></div></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="GRID BR início"><span class="brand-mark">G</span><span>GRID<span class="brand-red">BR</span><small>FORMULA RACING HUB</small></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav id="mainNav" class="main-nav" aria-label="Navegação principal">
+        <a class="nav-link active" href="#inicio">Início</a>
+        <a class="nav-link" href="#noticias">Notícias</a>
+        <a class="nav-link" href="#classificacao">Classificação</a>
+        <a class="nav-link" href="#calendario">Calendário</a>
+        <a class="nav-link" href="#sobre">Sobre</a>
+      </nav>
+      <a class="header-cta" href="#noticias">Explorar <span>↗</span></a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> A CASA DO AUTOMOBILISMO</div>
+        <h1>ACELERE.<br><span>INFORME-SE.</span><br>VIVA A F1.</h1>
+        <p>Notícias, histórias, números e tudo o que faz o coração acelerar dentro e fora das pistas.</p>
+        <div class="hero-actions"><a class="btn btn-red" href="#noticias">Ver últimas notícias <span>→</span></a><a class="text-link" href="#classificacao">Explorar classificação <span>↗</span></a></div>
+        <div class="hero-stats"><div><strong>F1</strong><span>Notícias e análises</span></div><div><strong>F2</strong><span>Novos talentos</span></div><div><strong>100%</strong><span>Paixão por corrida</span></div></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image" role="img" aria-label="Carro de corrida em uma pista"></div>
+        <div class="hero-image-shade"></div>
+        <div class="hero-caption"><span class="caption-tag">GRID BR / FEATURE</span><strong>O próximo capítulo<br>começa na pista.</strong><span class="caption-arrow">↗</span></div>
+        <div class="hero-number">01<span>/04</span></div>
+        <div class="vertical-label">RACE CULTURE • SINCE DAY ONE</div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Categorias do portal"><div class="container ticker-inner"><span>FÓRMULA 1</span><b>✳</b><span>FÓRMULA 2</span><b>✳</b><span>CLASSIFICAÇÃO</span><b>✳</b><span>BASTIDORES</span><b>✳</b><span>HISTÓRIA</span><b>✳</b><span>FÓRMULA 1</span></div></section>
+
+    <section class="section container" id="noticias">
+      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> FIQUE POR DENTRO</div><h2>ÚLTIMAS <span>NOTÍCIAS</span></h2></div><div class="section-tools"><label class="search-box"><span>⌕</span><input id="newsSearch" type="search" placeholder="Buscar notícia..." aria-label="Buscar notícia"></label></div></div>
+      <div class="filter-row" id="newsFilters"><button class="filter-chip selected" data-filter="Todas">Todas</button><button class="filter-chip" data-filter="F1">F1</button><button class="filter-chip" data-filter="F2">F2</button><button class="filter-chip" data-filter="Análise">Análise</button><button class="filter-chip" data-filter="História">História</button></div>
+      <div class="news-grid" id="newsGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>Nenhuma notícia encontrada. Tente outro termo.</p>
+      <div class="center-action"><button class="btn btn-outline" id="showMore">Carregar mais <span>↓</span></button></div>
+      <p class="disclaimer">As matérias exibidas nesta versão são conteúdo demonstrativo. Substitua por notícias apuradas e fontes verificáveis antes de publicar.</p>
+    </section>
+
+    <section class="dark-band" id="classificacao">
+      <div class="container standings-layout">
+        <div class="standings-intro"><div class="eyebrow"><span class="eyebrow-line"></span> A DISPUTA PELO TOPO</div><h2>QUEM ESTÁ<br><span>NA FRENTE?</span></h2><p>Acompanhe a tabela de pilotos e construtores. Os números abaixo são exemplos de interface, não a classificação oficial atual.</p><a class="text-link light" href="#calendario">Ver calendário <span>↗</span></a></div>
+        <div class="standings-card">
+          <div class="table-tabs"><button class="table-tab selected" data-table="drivers">Pilotos</button><button class="table-tab" data-table="teams">Construtores</button><span class="table-season">TEMPORADA DEMO</span></div>
+          <div class="standings-table-wrap"><table class="standings-table"><thead><tr><th>POS</th><th id="nameHeading">PILOTO</th><th>PONTOS</th></tr></thead><tbody id="standingsBody"></tbody></table></div>
+          <div class="table-footer"><span>DEMO / DADOS ILUSTRATIVOS</span><span class="live-indicator"><span class="dot"></span> SEM DADOS AO VIVO</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="calendario">
+      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> MARQUE NA AGENDA</div><h2>CALENDÁRIO <span>DE CORRIDAS</span></h2></div><div class="calendar-note">Etapas ilustrativas para demonstrar o layout</div></div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="container newsletter">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> NA SUA CAIXA DE ENTRADA</div><h2>FIQUE NO <span>GRID.</span></h2><p>Uma área pronta para conectar uma newsletter no futuro.</p></div>
+        <form id="newsletterForm" class="newsletter-form"><label class="sr-only" for="emailInput">Seu e-mail</label><input id="emailInput" type="email" placeholder="Seu melhor e-mail" required><button class="btn btn-red" type="submit">Quero receber <span>→</span></button><small id="newsletterMessage">Demonstração: o formulário ainda não salva nem envia e-mails.</small></form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="sobre"><div class="container footer-main"><a class="brand footer-brand" href="#inicio"><span class="brand-mark">G</span><span>GRID<span class="brand-red">BR</span><small>FORMULA RACING HUB</small></span></a><p>Feito por fãs, para fãs. Um portal independente dedicado à velocidade, às histórias e às pessoas do automobilismo.</p><div class="footer-links"><a href="#noticias">Notícias</a><a href="#classificacao">Classificação</a><a href="#calendario">Calendário</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> GRID BR. Projeto independente.</span><span>GRID BR não é afiliado à Formula 1 ou à FIA.</span></div></footer>
+  <dialog id="articleDialog" class="article-dialog"><button class="dialog-close" id="dialogClose" aria-label="Fechar">×</button><div id="dialogContent"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>

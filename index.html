@@ -56,6 +56,88 @@ footer p{font-size:12px;color:#aaa}
 footer small{display:block;max-width:1160px;margin:18px auto 0;color:#aaa;line-height:1.5}
 @media(max-width:800px){.hero{grid-template-columns:1fr}.lead{min-height:330px}.side{grid-template-columns:1fr 1fr}.side article{grid-template-columns:1fr}.side img{height:125px;min-height:125px}.layout{grid-template-columns:1fr}.sidebar{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){header{padding:20px}.logo{font-size:30px}nav{gap:20px;padding:0 15px}main{padding:22px 14px}.lead{min-height:320px}.lead-copy{padding:18px}.side{grid-template-columns:1fr}.side article{grid-template-columns:38% 1fr}.side img{height:140px;min-height:140px}.side h3{font-size:15px}.news{grid-template-columns:1fr}.card img{height:210px}.sidebar{grid-template-columns:1fr}}
+.stadings-tabs{
+display: flex;
+gap: 8px;
+margin-bottom: 12pc;
+}
+
+
+.standings-tabs button {
+flex: 1;
+padding: 9px 5px;
+border: 0;
+background: #15151e;
+color: white;
+cursor: pointer;
+font-weight: bold;
+}
+
+.standings-tabs  button:hover {
+backgroud: #e10600;
+}
+
+.stanging-row {
+display: flex;
+justify-content: space-between;
+gap: 8px;
+padding: 10px 0;
+border-bottom: 1px solid #eee;
+font-size: 12px
+}
+
+.standing-row strong {
+flex: 1;
+}
+
+.standing-points {
+font-weight: bold;
+color: #e10600;
+}
+
+#standings-status {
+margin-bottom: 8px;
+font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -86,7 +168,28 @@ footer small{display:block;max-width:1160px;margin:18px auto 0;color:#aaa;line-h
 <div class="layout">
 <div class="news" id="news"></div>
 <aside class="sidebar">
-<div class="panel" id="classificacao"><h3>Classificação</h3><div class="row"><b>01</b><strong>Dados não conectados</strong><b>—</b></div><p>Em breve: tabela de pilotos e equipes com dados atualizados.</p></div>
+<div class="painel" id="classificacao">
+<h3>Classificação F1</h3>
+<div class="standings-tabs">
+<button type="button"
+onclick="loadStandings"('drivers')">pilotos </button>
+<button type="button"
+onclick="loadStandings"('teams')"Equipes </button>
+</div>
+<p id="standings-status">Carregando classificação...</p>
+<div id="stanging-list"></div>
+<small>Fonte: API jolpica F1</small>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="panel" id="calendario"><h3>Próxima corrida</h3><p>Consulte o calendário oficial para datas e horários confirmados.</p><a class="btn" href="https://www.formula1.com/" target="_blank" rel="noopener">CALENDÁRIO OFICIAL ↗</a></div>
 <div class="panel"><h3>Sobre o GRID BR</h3><p>Um projeto independente para quem vive a velocidade. Notícias, análises e conteúdo sobre o mundo do automobilismo.</p></div>
 </aside>

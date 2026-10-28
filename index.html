@@ -211,6 +211,78 @@ news.innerHTML="";
 if(!list.length){news.innerHTML="<p>Nenhuma notícia encontrada.</p>";return}
 list.forEach(a=>{const el=document.createElement("article");el.className="card";el.innerHTML=`<img src="${a.img}" alt="${a.tag}" loading="lazy"><div class="copy"><span class="tag">${a.tag}</span><h3>${a.title}</h3><p>${a.desc}</p><div class="meta">CONTEÚDO GRID BR</div></div>`;news.appendChild(el)});
 }
+async function loadStandings(type = "drivers") {
+  const list = document.getElementById("standings-list");
+  const status = document.getElementById("standings-status");
+
+  status.textContent = "Carregando dados da F1...";
+  list.innerHTML = "";
+
+  const endpoint = type === "drivers"
+    ? "driverstandings"
+    : "constructorstandings";
+
+  try {
+    const response = await fetch(
+      https://api.jolpi.ca/ergast/f1/current/${endpoint}/
+    );
+
+    if (!response.ok) {
+      throw new Error("Não foi possível consultar a API");
+    }
+
+    const data = await response.json();
+    const table = data.MRData.StandingsTable;
+    const standings = table.StandingsLists[0];
+
+    if (!standings) {
+      status.textContent = "Classificação ainda indisponível.";
+      return;
+    }
+
+    const results = type === "drivers"
+      ? standings.DriverStandings
+      : standings.ConstructorStandings;
+
+    if (!results || results.length === 0) {
+      status.textContent = "Nenhum dado disponível.";
+      return;
+    }
+
+    status.textContent =
+      Temporada ${table.season} · Atualizado pela API;
+
+    results.forEach(item => {
+      const name = type === "drivers"
+        ? ${item.Driver.givenName} ${item.Driver.familyName}
+        : item.Constructor.name;
+
+      const row = document.createElement("div");
+      row.className = "standing-row";
+
+      const position = document.createElement("b");
+      position.textContent = String(item.position).padStart(2, "0");
+
+      const driverOrTeam = document.createElement("strong");
+      driverOrTeam.textContent = name;
+
+      const points = document.createElement("span");
+      points.className = "standing-points";
+      points.textContent = ${item.points} pts;
+
+      row.append(position, driverOrTeam, points);
+      list.appendChild(row);
+    });
+  } catch (error) {
+    status.textContent =
+      "Não foi possível carregar. Tente novamente mais tarde.";
+  }
+}
+
+
+
+
+
 document.getElementById("search").addEventListener("input",e=>render(e.target.value));
 render();
 </script>
